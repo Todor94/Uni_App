@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\cordova",
     "\\Images",
     "\\src"
   ],
-  "SelectedNode": "\\Images\\weather.jpg",
+  "SelectedNode": "\\src\\app.js",
   "PreviewInSolutionExplorer": false
 }
