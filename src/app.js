@@ -47,6 +47,16 @@ function createList() {
             scale: 4
         }
     }).on('select', () => createCheckPage()).appendTo(drawer);
+
+    new Button({
+        left: 10, top: '#cBtn 10', right: 10,
+        id: 'fBtn',
+        text: 'Мода',
+        image: {
+            src: 'Images/Shop.png',
+            scale: 7
+        }
+    }).on('select', () => createShopPage()).appendTo(drawer);
 }
 
 createMainPage();
@@ -214,6 +224,40 @@ function createCheckPage() {
         '#notesBtn': { left: 10, right: '50%', top: '30%' }
     });
     return checkPage;
+}
+
+function createShopPage() {
+    var shopPage = new tabris.Page({
+        title: 'Мода'
+    }).appendTo(View);
+
+    new Button({
+        id: 'myMallBtn',
+        text: 'My Mall',
+        textColor: 'white',
+        background: '#2DB3FF',
+        image: {
+            src: 'Images/MyMall.png',
+            scale: 0.95
+        }
+    }).on('select', () => CreateMyMallSite()).appendTo(shopPage);
+
+    new Button({
+        id: 'FdBtn',
+        text: 'Fashion Days',
+        textColor: 'white',
+        background: '#2DB3FF',
+        image: {
+            src: 'Images/FD.png',
+            scale: 2.7
+        }
+    }).on('select', () => CreateFdSite()).appendTo(shopPage);
+
+    shopPage.apply({
+        '#myMallBtn': { left: 10, right: '50%', top: '10%' },
+        '#FdBtn': { left: '50%', right: 10, top: '10%' }
+    });
+    return shopPage;
 }
 
 function CreateWeatherSite() {
@@ -562,4 +606,26 @@ function CreateProggramInfo() {
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'http://www.start.bg/lenta/tv-programa/all.html'
     }).appendTo(proggramPage);
+}
+
+function CreateMyMallSite() {
+    let MyMallPage = new tabris.Page({
+        title: 'My Mall'
+    }).appendTo(View);
+
+    new tabris.WebView({
+        left: 0, right: 0, top: 0, bottom: 0,
+        url: 'http://sports.mymall.bg/?gclid=Cj0KEQjwtdbLBRCLuOLC2PGWzo8BEiQAm8pA5VmdUZC3yhiTPvoAr8TinjHQbYLHqFydMLp8uCIvPq0aAubV8P8HAQ'
+    }).appendTo(MyMallPage);
+}
+
+function CreateFdSite() {
+    let FdPage = new tabris.Page({
+        title: 'Fashion Days'
+    }).appendTo(View);
+
+    new tabris.WebView({
+        left: 0, right: 0, top: 0, bottom: 0,
+        url: 'https://www.fashiondays.bg/?gclid=CjwKCAjwtdbLBRALEiwAm8pA5TLI1Ua2RMekH3Iu9g4j5SCeTaa0yC60dei1LxSlwVoFK0tI-f2a2RoCmR4QAvD_BwE'
+    }).appendTo(FdPage);
 }
