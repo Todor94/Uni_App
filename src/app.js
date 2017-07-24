@@ -2,6 +2,7 @@ const { NavigationView, Button, WebView, TextView, ui } = require('tabris');
 
 var View = new NavigationView({ left: 0, top: 0, right: 0, bottom: 0, drawerActionVisible: true }).appendTo(ui.contentView);
 var drawer = ui.drawer;
+var arrow = String.fromCharCode(8592);
 
 device.orientation = 'portrait-primary';
 
@@ -26,7 +27,7 @@ function createList() {
             src: 'Images/tv.png',
             scale: 55
         }
-    }).on('select', () => createMainPage()).appendTo(drawer);
+    }).on('select', () => createMainPage()).on('select', () => drawer.close()).appendTo(drawer);
 
     new Button({
         left: 10, top: '#mBtn 10', right: 10,
@@ -36,7 +37,7 @@ function createList() {
             src: 'Images/tran.jpg',
             scale: 13
         }
-    }).on('select', () => createTranPage()).appendTo(drawer);
+    }).on('select', () => createTranPage()).on('select', () => drawer.close()).appendTo(drawer);
 
     new Button({
         left: 10, top: '#tBtn 10', right: 10,
@@ -46,7 +47,7 @@ function createList() {
             src: 'Images/check.png',
             scale: 4
         }
-    }).on('select', () => createCheckPage()).appendTo(drawer);
+    }).on('select', () => createCheckPage()).on('select', () => drawer.close()).appendTo(drawer);
 
     new Button({
         left: 10, top: '#cBtn 10', right: 10,
@@ -56,7 +57,7 @@ function createList() {
             src: 'Images/Shop.png',
             scale: 7
         }
-    }).on('select', () => createShopPage()).appendTo(drawer);
+    }).on('select', () => createShopPage()).on('select', () => drawer.close()).appendTo(drawer);
 }
 
 createMainPage();
@@ -265,7 +266,15 @@ function CreateWeatherSite() {
         title: 'Времето'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => weatherwv.goBack()).appendTo(WeatherPage);
+
+    let weatherwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'http://dalivali.bg/'
     }).appendTo(WeatherPage);
@@ -278,7 +287,15 @@ function CreateInformationAboutTraffic() {
         title: 'Трафика в София'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => trafficwv.goBack()).appendTo(TrafficPage);
+
+    let trafficwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://www.google.com/maps/d/viewer?mid=1cJ5jG_D4gMDw1fBUzNa5GZ5tr-o&hl=bg&ll=42.679339596193095%2C23.323716999999988&z=13'
     }).appendTo(TrafficPage);
@@ -289,7 +306,15 @@ function CreateInformationAboutTransport() {
         title: 'Градски транспорт'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => transportwv.goBack()).appendTo(TransportPage);
+
+    let transportwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://www.sofiatraffic.bg/bg/transport/schedules'
     }).appendTo(TransportPage);
@@ -353,7 +378,15 @@ function CreateGmail() {
         title: 'Gmail'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => gmwv.goBack()).appendTo(GmailPage);
+
+    let gmwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://www.google.com/gmail/'
     }).appendTo(GmailPage);
@@ -364,7 +397,15 @@ function CreateYahooMail() {
         title: 'Yahoo Mail'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => yahoowv.goBack()).appendTo(YahooMailPage);
+
+    let yahoowv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://bg.mail.yahoo.com/'
     }).appendTo(YahooMailPage);
@@ -375,7 +416,15 @@ function CreateAbvMail() {
         title: 'Abv'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => abvwv.goBack()).appendTo(AbvMailPage);
+
+    let abvwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://www.abv.bg/'
     }).appendTo(AbvMailPage);
@@ -386,7 +435,15 @@ function CreateWikiPage() {
         title: 'Уикипедия'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => wikiwv.goBack()).appendTo(WikiPage);
+
+    let wikiwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://bg.wikipedia.org/'
     }).appendTo(WikiPage);
@@ -397,7 +454,15 @@ function CreateNavigationPage() {
         title: 'Навигация'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => navvw.goBack()).appendTo(navigationPage);
+
+    let navvw = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://www.google.bg/maps/'
     }).appendTo(navigationPage);
@@ -473,7 +538,15 @@ function CreateNewsbg() {
         title: 'News.bg'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => nbgwv.goBack()).appendTo(newsBgPage);
+
+    let nbgwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://news.bg/'
     }).appendTo(newsBgPage);
@@ -482,9 +555,17 @@ function CreateNewsbg() {
 function CreateBulgariaNews() {
     let bulgariaNewsPage = new tabris.Page({
         title: 'Bulgaria News'
-    }).appendTo(View);
+    }).appendTo(View);;
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => bnswv.goBack()).appendTo(bulgariaNewsPage);
+
+    let bnswv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'http://www.bulgaria-news.bg/'
     }).appendTo(bulgariaNewsPage);
@@ -495,7 +576,15 @@ function CreateBtvNews() {
         title: 'Btv Новините'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => bnwv.goBack()).appendTo(btvNewsPage);
+
+    let bnwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'http://btvnovinite.bg/'
     }).appendTo(btvNewsPage);
@@ -506,7 +595,15 @@ function CreateNovaNews() {
         title: 'Nova News'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => nwwv.goBack()).appendTo(novaNewsPage);
+
+    let nwwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://nova.bg/news'
     }).appendTo(novaNewsPage);
@@ -517,7 +614,15 @@ function CreateTranslate() {
         title: 'Речник'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => twv.goBack()).appendTo(translatePage);
+
+    let twv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://translate.google.bg/?hl=bg'
     }).appendTo(translatePage);
@@ -528,7 +633,15 @@ function CreateCalendar() {
         title: 'Календар'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => cwv.goBack()).appendTo(calendarPage);
+
+    let cwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://www.google.com/calendar'
     }).appendTo(calendarPage);
@@ -580,7 +693,15 @@ function CreateGNotes() {
         title: 'Google Keep'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => gnwv.goBack()).appendTo(gNotesPage);
+
+    let gnwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://keep.google.com/'
     }).appendTo(gNotesPage);
@@ -591,7 +712,15 @@ function CreateENotes() {
         title: 'Evernote'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => ewv.goBack()).appendTo(eNotesPage);
+
+    let ewv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://evernote.com/'
     }).appendTo(eNotesPage);
@@ -602,7 +731,15 @@ function CreateProggramInfo() {
         title: 'Програмата'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => pwv.goBack()).appendTo(proggramPage);
+
+    let pwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'http://www.start.bg/lenta/tv-programa/all.html'
     }).appendTo(proggramPage);
@@ -613,7 +750,15 @@ function CreateMyMallSite() {
         title: 'My Mall'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => mmwv.goBack()).appendTo(MyMallPage);
+
+    let mmwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'http://sports.mymall.bg/?gclid=Cj0KEQjwtdbLBRCLuOLC2PGWzo8BEiQAm8pA5VmdUZC3yhiTPvoAr8TinjHQbYLHqFydMLp8uCIvPq0aAubV8P8HAQ'
     }).appendTo(MyMallPage);
@@ -624,7 +769,15 @@ function CreateFdSite() {
         title: 'Fashion Days'
     }).appendTo(View);
 
-    new tabris.WebView({
+    new Button({
+        left: 10, bottom: '0.1%',
+        text: arrow,
+        font: '25px Arial',
+        textColor: 'white',
+        background: '#2DB3FF',
+    }).on('select', () => fdwv.goBack()).appendTo(FdPage);
+
+    let fdwv = new tabris.WebView({
         left: 0, right: 0, top: 0, bottom: 0,
         url: 'https://www.fashiondays.bg/?gclid=CjwKCAjwtdbLBRALEiwAm8pA5TLI1Ua2RMekH3Iu9g4j5SCeTaa0yC60dei1LxSlwVoFK0tI-f2a2RoCmR4QAvD_BwE'
     }).appendTo(FdPage);
